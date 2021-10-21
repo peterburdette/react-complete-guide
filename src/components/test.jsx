@@ -1,9 +1,0 @@
-import React, { Component } from 'react';
-
-class Test extends Component {
-    render() { 
-        return <div>Testing</div>;
-    }
-}
- 
-export default Test;
