@@ -11,7 +11,7 @@ function App() {
     <div>
       <h2>Let's get started!</h2>
       { expenses.map(expense => (
-        <ExpenseItem key={expense.id} expenseDate={expense.date} expenseTitle={expense.title} expenseAmount={expense.amount}></ExpenseItem>
+        <ExpenseItem key={expense.id} expenseDate={expense.date} expenseTitle={expense.title} expenseAmount={expense.amount} />
       ))}
     </div>
   );
