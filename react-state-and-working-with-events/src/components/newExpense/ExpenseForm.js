@@ -3,45 +3,45 @@ import './ExpenseForm.css';
 
 const ExpenseForm = () => {
     // Uses multiple states to store single values
-    // const [enteredTitle, setEnteredTitle] = useState('');
-    // const [enteredAmount, setEnteredAmount] = useState('');
-    // const [enteredDate, setEnteredDate] = useState('');
+    const [enteredTitle, setEnteredTitle] = useState('');
+    const [enteredAmount, setEnteredAmount] = useState('');
+    const [enteredDate, setEnteredDate] = useState('');
 
     // Uses a single state obj to store different values
-    const [userInput, setUserInput] = useState({
-        enteredTitle: '',
-        enteredAmount: '',
-        enteredDate: ''
-    })
+    // const [userInput, setUserInput] = useState({
+    //     enteredTitle: '',
+    //     enteredAmount: '',
+    //     enteredDate: ''
+    // })
 
     const titleChangeHandler = (event) => {
-        // calls setUserInput function and copies existing state obj and updates title
-        // setUserInput({ ...userInput, enteredTitle: event.target.value }); // works but isn't best practice
+        // calls setEnteredTitle function and updates title
+        setEnteredTitle(event.target.value);
 
         // prevState is a snapshot of the current state and will always give the latest up to date state
-        setUserInput((prevState) => {
-            return { ...prevState, enteredTitle: event.target.value };
-        });
+        // setUserInput((prevState) => {
+        //     return { ...prevState, enteredTitle: event.target.value };
+        // });
     };
     
     const amountChangeHandler = (event) => {
-        // calls setUserInput function and copies existing state obj and updates amount
-        // setUserInput({ ...userInput, enteredAmount: event.target.value }); // works but isn't best practice
+        // calls setEnteredAmount function and updates amount
+        setEnteredAmount(event.target.value);
 
         // prevState is a snapshot of the current state and will always give the latest up to date state
-        setUserInput((prevState) => {
-            return { ...prevState, enteredAmount: event.target.value };
-        });
+        // setUserInput((prevState) => {
+        //     return { ...prevState, enteredAmount: event.target.value };
+        // });
     };
 
     const dateChangeHandler = (event) => {
-        // calls setUserInput function and copies existing state obj and updates date
-        // setUserInput({ ...userInput, enteredDate: event.target.value }); // works but isn't best practice
+        // calls setEnteredDate function and updates date
+        setEnteredDate(event.target.value);
 
         // prevState is a snapshot of the current state and will always give the latest up to date state
-        setUserInput((prevState) => {
-            return { ...prevState, enteredDate: event.target.value };
-        });
+        // setUserInput((prevState) => {
+        //     return { ...prevState, enteredDate: event.target.value };
+        // });
     };
 
     return(
