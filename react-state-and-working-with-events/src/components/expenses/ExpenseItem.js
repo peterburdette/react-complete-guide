@@ -6,7 +6,8 @@ import "./ExpenseItem.css";
 const ExpenseItem = (props) => {
   // useState is a React hook - must be called directly inside component functions
   // 'const [title, setTitle]' is array destructuring
-  // the first element points to the managed value in 'useState'. The second is a function that is called later to set the new 'title'
+  // 'state' is separated on a per component instance basis so individual components are update and not all of them
+  // the first element ('title) points to the managed value in 'useState'. The second ('setTitle') is a function that is called later to set the new 'title'
   const [title, setTitle] = useState(props.title); // useState takes in a default value and ALWAYS returns an array with two elements
   console.log('ExpenseItem evaluated by React');
 
