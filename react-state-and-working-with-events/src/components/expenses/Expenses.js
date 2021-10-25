@@ -9,9 +9,9 @@ const Expenses = (props) => {
       {props.data.map((expense) => (
         <ExpenseItem
           key={expense.id}
-          expenseDate={expense.date}
-          expenseTitle={expense.title}
-          expenseAmount={expense.amount}
+          date={expense.date}
+          title={expense.title}
+          amount={expense.amount}
         />
       ))}
     </Card>

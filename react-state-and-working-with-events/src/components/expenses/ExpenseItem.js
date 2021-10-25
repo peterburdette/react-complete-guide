@@ -4,22 +4,25 @@ import Card from "../ui/Card";
 import "./ExpenseItem.css";
 
 const ExpenseItem = (props) => {
-  const [title, setTitle] = useState(props.title);
+  // useState is a React hook - must be called directly inside component functions
+  // 'const [title, setTitle]' is array destructuring
+  // the first element points to the managed value in 'useState'. The second is a function that is called later to set the new 'title'
+  const [title, setTitle] = useState(props.title); // useState takes in a default value and ALWAYS returns an array with two elements
   console.log('ExpenseItem evaluated by React');
 
-  const handleClick = () => {
-    setTitle('Updated!');
+  const clickHandler = () => {
+    setTitle('Updated!'); // using the state-updating function 'setTitle' to update the title
     console.log(title);
   };
 
   return (
     <Card className="expense-item">
-      <ExpenseDate date={props.expenseDate} />
+      <ExpenseDate date={props.date} />
       <div className="expense-item__description">
-        <h2>{props.expenseTitle}</h2>
+        <h2>{title}</h2>
       </div>
-      <div className="expense-item__price">${props.expenseAmount}</div>
-      <button onClick={handleClick}>Change Title</button>
+      <div className="expense-item__price">${props.amount}</div>
+      <button onClick={clickHandler}>Change Title</button>
     </Card>
   );
 }
