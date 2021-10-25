@@ -2,20 +2,31 @@ import React, { useState } from 'react';
 import './ExpenseForm.css';
 
 const ExpenseForm = () => {
-    const [enteredTitle, setEnteredTitle] = useState('');
-    const [enteredAmount, setEnteredAmount] = useState('');
-    const [enteredDate, setEnteredDate] = useState('');
+    // Uses multiple states to store single values
+    // const [enteredTitle, setEnteredTitle] = useState('');
+    // const [enteredAmount, setEnteredAmount] = useState('');
+    // const [enteredDate, setEnteredDate] = useState('');
+
+    // Uses a single state obj to store different values
+    const [userInput, setUserInput] = useState({
+        enteredTitle: '',
+        enteredAmount: '',
+        enteredDate: ''
+    })
 
     const titleChangeHandler = (event) => {
-        setEnteredTitle(event.target.value);
+        // calls setUserInput function and copies existing state obj and updates title
+        setUserInput({ ...userInput, enteredTitle: event.target.value });
     };
     
     const amountChangeHandler = (event) => {
-        setEnteredAmount(event.target.value);
+        // calls setUserInput function and copies existing state obj and updates amount
+        setUserInput({ ...userInput, enteredAmount: event.target.value });
     };
 
     const dateChangeHandler = (event) => {
-        setEnteredDate(event.target.value);
+        // calls setUserInput function and copies existing state obj and updates date
+        setUserInput({ ...userInput, enteredDate: event.target.value });
     };
 
     return(
