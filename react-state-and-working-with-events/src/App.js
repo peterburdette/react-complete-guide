@@ -30,9 +30,14 @@ const App = () => {
     },
   ];
 
+  // function to receive expenseData from NewExpense.js
+  const addExpenseHandler = expenseData => {
+    console.log('In App.js', expenseData);
+  }
+
   return (
     <div>
-      <NewExpense />
+      <NewExpense onAddExpense={addExpenseHandler} />
       <Expenses data={expenses} />
     </div>
   );

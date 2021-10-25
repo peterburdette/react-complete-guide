@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./ExpenseForm.css";
 
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
   // Uses multiple states to store single values
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAmount, setEnteredAmount] = useState("");
@@ -45,14 +45,16 @@ const ExpenseForm = () => {
   };
 
   const submitHandler = (event) => {  
-      const expenseData = {
-          title: enteredTitle,
-          amount: enteredAmount,
-          date: new Date(enteredDate),
-        };
-        
     event.preventDefault();
-    console.log(expenseData);
+    
+    const expenseData = {
+        title: enteredTitle,
+        amount: enteredAmount,
+        date: new Date(enteredDate),
+    };    
+
+    // Sends the 'expenseData' up to the parent component (NewExpense.js)
+    props.onSaveExpenseData(expenseData);
 
     // resetting the state of the form fields to their inital values
     setEnteredTitle('');
