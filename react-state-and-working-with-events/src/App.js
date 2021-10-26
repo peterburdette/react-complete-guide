@@ -30,7 +30,7 @@ const App = () => {
     },
   ];
 
-  // function to receive expenseData from NewExpense.js
+  // function to receive expenseData from NewExpense.js - as expenseData is being passed up it is also known as 'passing state up'
   const addExpenseHandler = expenseData => {
     console.log('In App.js', expenseData);
   }
