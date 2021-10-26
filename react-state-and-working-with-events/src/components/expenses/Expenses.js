@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import ExpensesFilter from "./ExpensesFilter";
-import ExpenseItem from "./ExpenseItem";
 import Card from "../ui/Card";
 import "./Expenses.css";
+import ExpensesList from "./ExpensesList";
 
 const Expenses = (props) => {
     const [filteredYear, setFilteredYear] = useState("2022");
@@ -16,31 +16,14 @@ const Expenses = (props) => {
         return expense.date.getFullYear() === parseInt(filteredYear);
     });
 
-    // create a variable with a message to display in the conditional
-    let expensesContent = <p>No expenses found.</p>;
-
-    // checks to see if there are any results from the filtered array
-    if (filteredExpenses.length > 0) {
-        expensesContent = filteredExpenses.map((expense) => (
-            <ExpenseItem
-                key={expense.id}
-                title={expense.title}
-                amount={expense.amount}
-                date={expense.date}
-            />
-        ));
-    }
-
     return (
-        <div>
-            <Card className="expenses">
-                <ExpensesFilter
-                    selected={filteredYear}
-                    onChangeFilter={filterChangeHandler}
-                />
-                {expensesContent}
-            </Card>
-        </div>
+        <Card className="expenses">
+            <ExpensesFilter
+                selected={filteredYear}
+                onChangeFilter={filterChangeHandler}
+            />
+            <ExpensesList items={filteredExpenses} />
+        </Card>
     );
 };
 
