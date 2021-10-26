@@ -7,7 +7,7 @@ const DUMMY_EXPENSES = [
         id: 1,
         title: "Car Insurance",
         amount: 294.67,
-        date: new Date(2021, 2, 24),
+        date: new Date(2022, 2, 24),
     },
     {
         id: 2,
@@ -19,13 +19,13 @@ const DUMMY_EXPENSES = [
         id: 3,
         title: "Home Insurance",
         amount: 199.99,
-        date: new Date(2021, 4, 26),
+        date: new Date(2020, 4, 26),
     },
     {
         id: 4,
         title: "Flood Insurance",
         amount: 200.44,
-        date: new Date(2021, 5, 27),
+        date: new Date(2019, 5, 27),
     },
 ];
 
