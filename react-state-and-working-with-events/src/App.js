@@ -25,7 +25,7 @@ const DUMMY_EXPENSES = [
         id: 4,
         title: "Flood Insurance",
         amount: 200.44,
-        date: new Date(2019, 5, 27),
+        date: new Date(2020, 5, 27),
     },
 ];
 
