@@ -7,41 +7,19 @@ const ExpenseForm = (props) => {
     const [enteredAmount, setEnteredAmount] = useState("");
     const [enteredDate, setEnteredDate] = useState("");
 
-    // Uses a single state obj to store different values
-    // const [userInput, setUserInput] = useState({
-    //     enteredTitle: '',
-    //     enteredAmount: '',
-    //     enteredDate: ''
-    // })
-
     const titleChangeHandler = (event) => {
         // calls setEnteredTitle function and updates title
         setEnteredTitle(event.target.value);
-
-        // prevState is a snapshot of the current state and will always give the latest up to date state
-        // setUserInput((prevState) => {
-        //     return { ...prevState, enteredTitle: event.target.value };
-        // });
     };
 
     const amountChangeHandler = (event) => {
         // calls setEnteredAmount function and updates amount
         setEnteredAmount(event.target.value);
-
-        // prevState is a snapshot of the current state and will always give the latest up to date state
-        // setUserInput((prevState) => {
-        //     return { ...prevState, enteredAmount: event.target.value };
-        // });
     };
 
     const dateChangeHandler = (event) => {
         // calls setEnteredDate function and updates date
         setEnteredDate(event.target.value);
-
-        // prevState is a snapshot of the current state and will always give the latest up to date state
-        // setUserInput((prevState) => {
-        //     return { ...prevState, enteredDate: event.target.value };
-        // });
     };
 
     const submitHandler = (event) => {
