@@ -5,6 +5,7 @@ import Card from "../UI/Card";
 import Button from "../UI/Button";
 import ErrorModal from "../UI/ErrorModal";
 import classes from "./AddUser.module.css";
+import Input from "../UI/Input";
 
 const AddUser = (props) => {
     const [enteredUsername, setEnteredUsername] = useState("");
@@ -59,15 +60,15 @@ const AddUser = (props) => {
             )}
             <Card className={classes.input}>
                 <form onSubmit={addUserHandler}>
-                    <label htmlFor="username">Username</label>
-                    <input
+                    <Input
+                        title="Username"
                         id="username"
                         type="text"
                         value={enteredUsername}
                         onChange={usernameChangeHandler}
                     />
-                    <label htmlFor="age">Age (Years)</label>
-                    <input
+                    <Input
+                        title="Age (Years)"
                         id="age"
                         type="number"
                         value={enteredAge}
