@@ -9,6 +9,7 @@ const Input = (props) => {
                 type={props.type}
                 value={props.value}
                 onChange={props.onChange}
+                ref={props.reference}
             />
         </div>
     );
