@@ -18,7 +18,7 @@ function App() {
     return (
         <Fragment>
             <AddUser onAddUser={addUserHandler} />
-            <UsersList users={usersList} />
+            {usersList.length > 0 && <UsersList users={usersList} />}
         </Fragment>
     );
 }
