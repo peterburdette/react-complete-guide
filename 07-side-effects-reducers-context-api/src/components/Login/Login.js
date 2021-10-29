@@ -11,11 +11,24 @@ const Login = (props) => {
     const [passwordIsValid, setPasswordIsValid] = useState();
     const [formIsValid, setFormIsValid] = useState(false);
 
-    // this will only re-run if 'enterEmail' or 'enterPassword' changes (runs with every keystroke!)
+    // this will only re-run if 'enterEmail' or 'enterPassword' changes and nothing else changes after 500 milleseconds
     useEffect(() => {
-        setFormIsValid(
-            enteredEmail.includes("@") && enteredPassword.trim().length > 6
-        );
+        // side-effect function
+        const identifier = setTimeout(() => {
+            console.log("checking form validity");
+            setFormIsValid(
+                enteredEmail.includes("@") && enteredPassword.trim().length > 6
+            );
+        }, 500);
+
+        // this 'cleanup function' will run before 'useEffect' runs after 'useEffect' has run once
+        return () => {
+            console.log("cleanup");
+            // whenever the cleanup function runs the timer is reset so that when the next side-effect function runs we are able to set a new timer
+            // practically, this will allow the user to continuously type without activating the side-effect
+            // if there was an http request then it would only be sent once instead of x amount of times
+            clearTimeout(identifier);
+        };
     }, [enteredEmail, enteredPassword]);
 
     const emailChangeHandler = (event) => {

@@ -13,7 +13,7 @@ function App() {
         // fetches the key/value pair for isLoggedIn
         const storedUserLoggedInInformation =
             localStorage.getItem("isLoggedIn");
-        console.log(storedUserLoggedInInformation);
+
         // checks to see if the user has already been logged in
         if (storedUserLoggedInInformation === "1") {
             setIsLoggedIn(true);
