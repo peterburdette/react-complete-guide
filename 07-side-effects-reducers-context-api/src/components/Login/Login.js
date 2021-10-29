@@ -11,7 +11,7 @@ const Login = (props) => {
     const [passwordIsValid, setPasswordIsValid] = useState();
     const [formIsValid, setFormIsValid] = useState(false);
 
-    // this will only re-run if 'enterEmail' or 'enterPassword' changes
+    // this will only re-run if 'enterEmail' or 'enterPassword' changes (runs with every keystroke!)
     useEffect(() => {
         setFormIsValid(
             enteredEmail.includes("@") && enteredPassword.trim().length > 6
