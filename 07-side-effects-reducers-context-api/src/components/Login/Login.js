@@ -11,6 +11,10 @@ const Login = (props) => {
     const [passwordIsValid, setPasswordIsValid] = useState();
     const [formIsValid, setFormIsValid] = useState(false);
 
+    useEffect(() => {
+        console.log("effect running");
+    });
+
     // this will only re-run if 'enterEmail' or 'enterPassword' changes and nothing else changes after 500 milleseconds
     useEffect(() => {
         // side-effect function
