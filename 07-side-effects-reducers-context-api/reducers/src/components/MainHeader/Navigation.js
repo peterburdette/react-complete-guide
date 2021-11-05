@@ -3,7 +3,7 @@ import AuthContext from "../../context/auth-context";
 
 import classes from "./Navigation.module.css";
 
-const Navigation = (props) => {
+const Navigation = () => {
     // using the useContext hook outputs the same functionalty as using <AuthContext.Consumer> - this way uses less code and is more elegant
     const ctx = useContext(AuthContext);
 
