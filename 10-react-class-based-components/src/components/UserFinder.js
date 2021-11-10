@@ -1,6 +1,13 @@
 import { Fragment, useState, useEffect } from "react";
 
 import Users from "./Users";
+import styles from "./UserFinder.module.css";
+
+const DUMMY_USERS = [
+    { id: "u1", name: "Max" },
+    { id: "u2", name: "Manuel" },
+    { id: "u3", name: "Julie" },
+];
 
 const UserFinder = () => {
     const [filteredUsers, setFilteredUsers] = useState(DUMMY_USERS);
@@ -8,7 +15,9 @@ const UserFinder = () => {
 
     useEffect(() => {
         setFilteredUsers(
-            DUMMY_USERS.filter((user) => user.name.includes(searchTerm))
+            DUMMY_USERS.filter((user) =>
+                user.name.toLowerCase().includes(searchTerm.toLowerCase())
+            )
         );
     }, [searchTerm]);
 
@@ -18,7 +27,9 @@ const UserFinder = () => {
 
     return (
         <Fragment>
-            <input type="search" onChange={searchChangeHandler} />
+            <div className={styles.finder}>
+                <input type="search" onChange={searchChangeHandler} />
+            </div>
             <Users users={filteredUsers} />
         </Fragment>
     );
