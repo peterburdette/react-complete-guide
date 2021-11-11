@@ -5,8 +5,11 @@ import "./App.css";
 
 function App() {
     const [movies, setMovies] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
 
     async function fetchMoviesHandler() {
+        setIsLoading(true);
+
         // The 'response' is a json object with data that comes from the api. The 'response' will need to be converted to a javascript object so it can be used within the application
 
         // Javascript promises are being utilized to fetch the data. When dealing with promises, you can build these 'then' chains here, so Then call after Then call, but you can also use an alternative syntax, async await. You can add the 'async' keyword in front of the function and then 'await' in front of the operation which is returning a promise.
@@ -27,6 +30,7 @@ function App() {
         });
         // sets the state of 'movies' to the api data
         setMovies(transformedMovies);
+        setIsLoading(false);
     }
 
     return (
@@ -35,7 +39,11 @@ function App() {
                 <button onClick={fetchMoviesHandler}>Fetch Movies</button>
             </section>
             <section>
-                <MoviesList movies={movies} />
+                {!isLoading && movies.length > 0 && (
+                    <MoviesList movies={movies} />
+                )}
+                {!isLoading && movies.length === 0 && <p>Found no movies.</p>}
+                {isLoading && <p>Loading...</p>}
             </section>
         </React.Fragment>
     );
