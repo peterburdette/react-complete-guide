@@ -38,18 +38,33 @@ function App() {
             // transforms the response into json
             const data = await response.json();
 
-            // transform the data again so that the properties within the object match what we want them to be called
-            const transformedMovies = data.results.map((movieData) => {
-                // maps the object to new properties
-                return {
-                    id: movieData.episode_id,
-                    title: movieData.title,
-                    openingText: movieData.opening_crawl,
-                    releaseDate: movieData.release_date,
-                };
-            });
-            // sets the state of 'movies' to the api data
-            setMovies(transformedMovies);
+            const loadedMovies = [];
+
+            for (const key in data) {
+                loadedMovies.push({
+                    id: key,
+                    title: data[key].title,
+                    openingText: data[key].openingText,
+                    releaseDate: data[key].releaseDate,
+                });
+            }
+
+            // // transform the data again so that the properties within the object match what we want them to be called
+            // const transformedMovies = data.results.map((movieData) => {
+            //     // maps the object to new properties
+            //     return {
+            //         id: movieData.episode_id,
+            //         title: movieData.title,
+            //         openingText: movieData.opening_crawl,
+            //         releaseDate: movieData.release_date,
+            //     };
+            // });
+
+            // sets the state of 'movies' to the Start Wars api data
+            // setMovies(transformedMovies);
+
+            // sets the state of 'movies' to the Firebase api data
+            setMovies(loadedMovies);
         } catch (error) {
             setError(error.message);
         }
@@ -63,8 +78,21 @@ function App() {
         fetchMoviesHandler();
     }, [fetchMoviesHandler]);
 
-    function addMovieHandler(movie) {
-        console.log(movie);
+    async function addMovieHandler(movie) {
+        // fetch doesn't only 'fetch' data, it also sends it
+        const response = await fetch(
+            "https://react-http-a4de0-default-rtdb.firebaseio.com/movies.json",
+            {
+                method: "POST", // by default the method is 'GET'
+                body: JSON.stringify(movie), // Firebase wants the data in JSON format
+                headers: {
+                    "Content-Type": "application/json", // Technically this header is not required by Firebase, it would be able to handle the request even if that header is not set, but a lot of rest APIs to which requests are sent, might require this extra header, which describes to content that will be sent, and therefore setting it is not a bad idea.
+                },
+            }
+        );
+
+        const data = await response.json();
+        console.log(data);
     }
 
     let content = <p>Found no movies.</p>;
