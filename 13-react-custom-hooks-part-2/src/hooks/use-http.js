@@ -10,9 +10,11 @@ const useHttp = (requestConfig, applyData) => {
         setError(null);
         try {
             const response = await fetch(requestConfig.url, {
-                method: requestConfig.method,
-                headers: requestConfig.headers,
-                body: JSON.stringify(requestConfig.body),
+                method: requestConfig.method ? requestConfig.method : "GET", // the conditional allows for the user to not have to provide this property everytime
+                headers: requestConfig.headers ? requestConfig.headers : {}, // the conditional allows for the user to not have to provide this property everytime
+                body: requestConfig.body
+                    ? JSON.stringify(requestConfig.body)
+                    : null, // the conditional allows for the user to not have to provide this property everytime
             });
 
             if (!response.ok) {
