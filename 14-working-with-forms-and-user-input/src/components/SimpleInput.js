@@ -8,6 +8,13 @@ const SimpleInput = (props) => {
     const enteredNameIsValid = enteredName.trim() !== "";
     // checks to see if the enteredNameIsValid is invalid and checks to see if the enteredNameTouched is false
     const nameInputIsInvalid = !enteredNameIsValid && enteredNameTouched;
+    // setting the default state of formIsValid
+    let formIsValid = false;
+
+    // checks to see if all input states are valid (add more conditions to the conditional if there are more fields)
+    if (enteredNameIsValid) {
+        formIsValid = true;
+    }
 
     // handles onChange - whenever a user types in the field
     const nameInputChangeHandler = (event) => {
@@ -60,7 +67,7 @@ const SimpleInput = (props) => {
                 )}
             </div>
             <div className="form-actions">
-                <button>Submit</button>
+                <button disabled={!formIsValid}>Submit</button>
             </div>
         </form>
     );
