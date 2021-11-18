@@ -11,6 +11,11 @@ const SimpleInput = (props) => {
     const formSubmissionHandler = (event) => {
         event.preventDefault();
 
+        // basic validation
+        if (enteredName.trim() === "") {
+            return;
+        }
+
         console.log("useState ", enteredName);
         const enteredValue = nameInputRef.current.value;
         console.log("useRef ", enteredValue);
