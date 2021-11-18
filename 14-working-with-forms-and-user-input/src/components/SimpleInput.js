@@ -25,7 +25,7 @@ const SimpleInput = (props) => {
         console.log("useRef ", enteredValue);
 
         // reset the form
-        setEnteredNameIsValid("");
+        setEnteredName("");
         // nameInputRef.current.value = ''; // works but not ideal, this will directly manipulate the DOM
     };
 
