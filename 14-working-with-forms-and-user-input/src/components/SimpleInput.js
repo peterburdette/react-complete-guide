@@ -1,8 +1,8 @@
-import { useState } from "react";
+import React from "react";
 import useInput from "../hooks/use-input";
 
 const SimpleInput = (props) => {
-    // using 'useInput' hook - extracting values from the return inside of 'use-input.js'
+    // using 'useInput' hook - extracting values from the return inside of 'use-input.js' for the 'name' input
     const {
         value: enteredName,
         isValid: enteredNameIsValid,
@@ -12,14 +12,15 @@ const SimpleInput = (props) => {
         reset: resetNameInput,
     } = useInput((value) => value.trim() !== ""); // passing an anonymous arrow function into 'useInput' which is received as the 'validateValue' parameter in 'use-input.js'
 
-    const [enteredEmail, setEnteredEmail] = useState("");
-    const [enteredEmailTouched, setEnteredEmailTouched] = useState(false);
-
-    // if the enteredEmail is not empty return true and store inside of enteredEmailIsValid
-    const enteredEmailIsValid =
-        enteredEmail.trim() !== "" && enteredEmail.includes("@");
-    // checks to see if the enteredEmailIsValid is invalid and checks to see if the enteredEmailTouched is false
-    const emailInputIsInvalid = !enteredEmailIsValid && enteredEmailTouched;
+    // using 'useInput' hook - extracting values from the return inside of 'use-input.js' for the 'email' input
+    const {
+        value: enteredEmail,
+        isValid: enteredEmailIsValid,
+        hasError: emailInputHasError,
+        valueChangeHandler: emailChangedHandler,
+        inputBlurHandler: emailBlurHandler,
+        reset: resetEmailInput,
+    } = useInput((value) => value.trim() !== "" && value.includes("@")); // passing an anonymous arrow function into 'useInput' which is received as the 'validateValue' parameter in 'use-input.js'
 
     // setting the default state of formIsValid
     let formIsValid = false;
@@ -28,18 +29,6 @@ const SimpleInput = (props) => {
     if (enteredNameIsValid && enteredEmailIsValid) {
         formIsValid = true;
     }
-
-    // handles onChange - whenever a user types in the field
-    const emailInputChangeHandler = (event) => {
-        console.log("email onChange");
-        setEnteredEmail(event.target.value);
-    };
-
-    // handles onBlur - whenever a user clicks out of the field
-    const emailInputBlurHandler = (event) => {
-        console.log("email onBlur");
-        setEnteredEmailTouched(true);
-    };
 
     // handles form submission
     const formSubmissionHandler = (event) => {
@@ -55,16 +44,14 @@ const SimpleInput = (props) => {
 
         // reset the form states
         resetNameInput();
-
-        setEnteredEmail("");
-        setEnteredEmailTouched(false);
+        resetEmailInput();
     };
 
     const nameInputClasses = nameInputHasError
         ? "form-control invalid"
         : "form-control";
 
-    const emailInputClasses = emailInputIsInvalid
+    const emailInputClasses = emailInputHasError
         ? "form-control invalid"
         : "form-control";
 
@@ -88,11 +75,11 @@ const SimpleInput = (props) => {
                 <input
                     type="email"
                     id="email"
-                    onChange={emailInputChangeHandler}
-                    onBlur={emailInputBlurHandler}
+                    onChange={emailChangedHandler}
+                    onBlur={emailBlurHandler}
                     value={enteredEmail}
                 />
-                {emailInputIsInvalid && (
+                {emailInputHasError && (
                     <p className="error-text">Please provide a valid email.</p>
                 )}
             </div>
