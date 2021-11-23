@@ -43,8 +43,6 @@ const Checkout = (props) => {
             postalCode: enteredPostalCodeIsValid,
         });
 
-        console.log(formInputsValidity);
-
         // checks to see if all fields are valid
         const formIsValid =
             enteredNameIsValid &&
@@ -58,6 +56,12 @@ const Checkout = (props) => {
         }
 
         // submit cart data
+        props.onSubmit({
+            name: enteredName,
+            street: enteredStreet,
+            city: enteredCity,
+            postalCode: enteredPostalCode,
+        });
     };
 
     // error styling
