@@ -8,6 +8,12 @@ const counterReducer = (state = initialState, action) => {
             counter: state.counter + action.amount,
             showCounter: state.showCounter,
         };
+
+        // never mutate the existing state
+        // e.g.:
+        // state.counter++;
+        // return state;
+        // a state object must always be returned
     }
     if (action.type === "increment") {
         return {
