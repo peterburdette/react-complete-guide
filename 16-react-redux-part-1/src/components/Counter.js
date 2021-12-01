@@ -5,8 +5,8 @@ import classes from "./Counter.module.css";
 
 const Counter = () => {
     const dispatch = useDispatch();
-    const counter = useSelector((state) => state.counter); // looks at 'counter' property within redux state
-    const showCounter = useSelector((state) => state.showCounter); // looks at 'showCounter' property within redux state
+    const counter = useSelector((state) => state.counter.value); // looks at 'value' property within redux state property 'counter'
+    const showCounter = useSelector((state) => state.counter.showCounter); // looks at 'showCounter' property within redux state property 'counter'
 
     const increaseHandler = () => {
         // dispatch({ type: "increase", amount: 5 });
