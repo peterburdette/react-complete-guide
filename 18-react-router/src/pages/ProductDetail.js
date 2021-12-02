@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 const ProductDetail = () => {
     const params = useParams();
 
-    console.log(params.productId);
+    console.log(params);
 
     return (
         <section>
