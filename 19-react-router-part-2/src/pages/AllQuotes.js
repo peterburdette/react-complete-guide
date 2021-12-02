@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Quotes = () => {
+const AllQuotes = () => {
     return (
         <section>
             <h1>All Quotes</h1>
@@ -20,4 +20,4 @@ const Quotes = () => {
     );
 };
 
-export default Quotes;
+export default AllQuotes;
