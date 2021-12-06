@@ -31,10 +31,10 @@ const AllQuotes = () => {
     }
 
     if (
-        (status === "completed" && !loadedQuotes) ||
-        loadedQuotes.length === 0
+        status === "completed" &&
+        (!loadedQuotes || loadedQuotes.length === 0)
     ) {
-        <NoQuotesFound />;
+        return <NoQuotesFound />;
     }
 
     return (
