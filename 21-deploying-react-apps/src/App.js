@@ -11,6 +11,7 @@ const QuoteDetail = React.lazy(() => import("./pages/QuoteDetail"));
 const NotFound = React.lazy(() => import("./pages/NotFound"));
 const AllQuotes = React.lazy(() => import("./pages/AllQuotes"));
 
+// <Suspense fallback={}> is required to show an intermediary state between loading components due to lazy loading
 function App() {
     return (
         <Layout>
