@@ -15,6 +15,7 @@ function App() {
                         path="/"
                         element={<Navigate replace to="/welcome" />}
                     />
+                    {/* The asterisk tells react to match the starting path only instead of searching for an exact full match - this is necessary if there are child routes */}
                     <Route path="/welcome/*" element={<Welcome />} />
                     <Route path="/products" element={<Products />} />
                     <Route
