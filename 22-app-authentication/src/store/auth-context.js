@@ -8,16 +8,22 @@ const AuthContext = React.createContext({
 });
 
 export const AuthContextProvider = (props) => {
-    const [token, setToken] = useState(null);
+    // checks to see if there is a localstorage item named 'token' - it will either return the token or undefined
+    const initialToken = localStorage.getItem("token");
+    const [token, setToken] = useState(initialToken);
 
     const userIsLoggedIn = !!token;
 
     const loginHandler = (token) => {
         setToken(token);
+        // utilizing localstorage to store the token so that the user isn't logged out on a page refresh
+        localStorage.setItem("token", token);
     };
 
     const logoutHandler = (token) => {
         setToken(false);
+        // removes the 'token' in the localstorage on logout
+        localStorage.removeItem("token");
     };
 
     const contextValue = {
