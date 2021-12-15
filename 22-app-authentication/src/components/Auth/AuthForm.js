@@ -40,7 +40,7 @@ const AuthForm = () => {
             body: JSON.stringify({
                 email: enteredEmail,
                 password: enteredPassword,
-                returnSecureTokenKey: true,
+                returnSecureToken: true,
             }),
             headers: {
                 "Content-Type": "application/json",
@@ -52,21 +52,21 @@ const AuthForm = () => {
                     return res.json();
                 } else {
                     return res.json().then((data) => {
-                        //show error modal
-                        console.log(data);
-
-                        let errorMessage = "Authentication failed.";
-
+                        let errorMessage = "Authentication failed!";
                         // if (data && data.error && data.error.message) {
-                        //     errorMessage = data.error.message;
+                        //   errorMessage = data.error.message;
                         // }
+
                         throw new Error(errorMessage);
                     });
                 }
             })
             .then((data) => {
+                const expirationTime = new Date(
+                    new Date().getTime() + +data.expiresIn * 1000
+                );
                 console.log(data);
-                authCtx.login(data.idToken);
+                authCtx.login(data.idToken, expirationTime.toISOString());
 
                 // redirects the user to the homepage after a successful login
                 history.replace("/");
